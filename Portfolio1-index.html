@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mikran Sandhu - Portfolio</title>
+
+    <link rel="icon" href="https://i.pinimg.com/736x/f6/3f/4c/f63f4c2b21694578d39deaae47c73f4c.jpg">
+    <!-- font awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- tailwindcss -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- css -->
+
+    <style>
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #0c0d0c, #206fc9) !important;
+            color: white;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden; /* Prevent horizontal scrollbar */
+        }
+
+        /* Header & Title */
+        header {
+            padding-top: 20px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-top: 0; /* Remove default margin-top to fix spacing */
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        .highlight {
+            color: #FFD700;
+        }
+        .h1{
+            font-size: 2.8rem;
+
+        }
+        /* Typing Animation */
+        .animated-text {
+            font-size: 1.5rem;
+            overflow: hidden;
+            white-space: nowrap;
+            border-right: 2px solid white;
+            width: 100%;
+            animation: typing 4s steps(40, end) infinite;
+            display: inline-block; /* Ensure the element behaves like inline for proper centering */
+        }
+
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Social Links */
+        .socials {
+            margin-top: 20px; /* Add margin above the section */
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center; /* Center the buttons horizontally */
+            flex-wrap: wrap; /* Allow buttons to wrap to the next line on smaller screens */
+            margin-top: 10px; /* Add space above the buttons */
+        }
+
+
+        .social-btn {
+            display: inline-block;
+            margin: 10px;
+            padding: 10px 20px; /* Add horizontal padding to make buttons wider*/
+            background-color: #00ccff;
+            color: black;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out; /* Add background-color transition */
+            font-size: 1rem; /* Increase font size of the buttons */
+        }
+
+        .social-btn:hover {
+            transform: scale(1.1);
+            background-color: #FFC107;
+        }
+
+        /* Contact Form */
+        .contact {
+            margin-top: 20px; /* Add margin above the contact section */
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 80%; /* Limit form width */
+            margin: 0 auto; /* Center the form */
+        }
+
+        input, textarea {
+            width: 100%; /* Make input elements take full width of their container */
+            padding: 10px;
+            margin: 10px 0; /* Adjust vertical margin */
+            border-radius: 5px;
+            border: none;
+            box-sizing: border-box; /* Include padding and border in element's total width and height */
+        }
+
+        button {
+            background-color: #00f7ff;
+            color: black;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            transition: 0.3s ease-in-out;
+            border-radius: 5px;
+            font-size: 1rem;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: #FFC107;
+            transform: scale(1.1);
+        }
+
+        #responseMessage {
+            margin-top: 10px;
+            font-size: 1rem;
+            color: white;
+        }
+
+        /* Fade-in Scroll Effect */
+        .fade-in {
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+
+        .fade-in.active {
+            opacity: 1;
+        }
+
+        /* Sections */
+        section {
+            padding: 20px 0; /* Add vertical padding to sections */
+            margin-bottom: 20px; /* Add margin below each section */
+        }
+
+        /* Responsive adjustments for smaller screens */
+        @media screen and (max-width: 768px) {
+            h1 {
+                font-size: 2rem; /* Smaller heading on mobile */
+            }
+            .animated-text {
+                font-size: 1.2rem; /* Smaller text on mobile */
+            }
+            .social-btn {
+                font-size: 0.9rem; /* Smaller buttons on mobile */
+                padding: 8px 16px;
+            }
+            input, textarea {
+                width: 90%; /* Slightly smaller input on mobile */
+            }
+            form {
+                width: 90%;
+            }
+        }
+
+        /* Fix for very small screens */
+        @media screen and (max-width: 480px) {
+            h1 {
+                font-size: 1.75rem;
+            }
+            .animated-text {
+                font-size: 1rem;
+            }
+            .social-btn {
+                font-size: 0.8rem;
+                padding: 6px 12px;
+            }
+            .social-icons {
+                flex-direction: column; /* Stack buttons vertically on very small screens */
+            }
+            input, textarea {
+                width: 95%;
+            }
+            form{
+                width: 95%;
+            }
+        }
+
+        /* Trophy Styles */
+        .trophy-section {
+            margin-top: 20px;
+        }
+
+        .trophy-card {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 15px;
+            margin: 10px auto;
+            width: 80%;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+
+        .trophy-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .trophy-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+            color: #FFD700;
+        }
+
+        .trophy-card p {
+            font-size: 0.9rem;
+            color: #eee;
+        }
+
+        /* Skills Section Styles */
+        .skills-section {
+            margin-top: 20px;
+        }
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 10px;
+        }
+        .skill-card {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 10px 15px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
+            display: flex; /* Use flexbox for layout */
+            align-items: center; /* Vertically center the skill text */
+            justify-content: center;
+            width: calc(30% - 30px); /* 3 skills per row with spacing, adjust as needed */
+            min-width: 100px;  /* Ensure each card has a minimum width */
+            height: 50px; /* Give skills a fixed height */
+            box-sizing: border-box;
+        }
+
+        .skill-card:hover {
+            background-color: rgba(255, 215, 0, 0.2);
+            transform: scale(1.05);
+        }
+
+        .skill-card h3 {
+            font-size: 1rem;
+            color: #fff;
+            margin: 0; /* Remove default heading margin */
+        }
+
+        /* Experience Section Styles */
+        .experience-section {
+            margin-top: 20px;
+        }
+
+        .experience-card {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 15px;
+            margin: 10px auto;
+            width: 80%;
+            text-align: left;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+
+        .experience-card:hover {
+            transform: scale(1.03);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .experience-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+            color: #FFD700;
+        }
+
+        .experience-card h4 {
+            font-size: 1rem;
+            margin-bottom: 10px;
+            color: #eee;
+        }
+
+        .experience-card ul {
+            list-style-position: inside;
+            padding-left: 0;
+            margin-bottom: 0;
+            color: #ddd;
+        }
+
+        .experience-card li {
+            margin-bottom: 5px;
+        }
+
+        /* Style for the new footer logo section to help center it if needed */
+        .footer-logo {
+            display: flex; /* Use flexbox to center its content */
+            justify-content: center; /* Center horizontally */
+            align-items: center; /* Center vertically if the .diiiv had a specific height */
+            padding: 20px 0; /* Add some padding around it */
+            margin-top: 20px; /* Add margin above */
+        }
+        .diiiv { /* The div inside footer-logo already handles its own centering with Tailwind */
+            /* No specific styles needed here unless to override body text-align if necessary */
+        }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1 id="title" class="h1">👋 Hi there! I'm <span class="highlight">Muhammad Mikran Sandhu</span></h1>
+        <p class="animated-text">Web Designer 💻 | Social Media Manager 📱 | Logo Designer 🎨</p>
+    </header>
+
+    <section class="about fade-in">
+        <h2>💫 About Me</h2>
+        <p>I specialize in front-end web development (JavaScript ⚛️, React.js), strategic digital marketing 📈, and branding ✨.</p>
+        <button id="ctaButton" class="social-btn">View My Work</button>
+    </section>
+
+    <section class="socials fade-in">
+        <h2>🌐 Connect with Me</h2>
+        <div class="social-icons">
+            <a href="https://www.facebook.com/people/M-Mikran-Sandhu/" class="social-btn">Facebook</a>
+            <a href="https://www.instagram.com/mmikransandhu/" class="social-btn">Instagram</a>
+            <a href="https://www.linkedin.com/in/m-mikran-sandhu/" class="social-btn">LinkedIn</a>
+        </div>
+    </section>
+
+    <section class="skills-section fade-in">
+        <h2>💪 My Skills</h2>
+        <div class="skills-container">
+            <div class="skill-card"><h3>Leadership</h3></div>
+            <div class="skill-card"><h3>Web Design</h3></div>
+            <div class="skill-card"><h3>Responsive Web Design</h3></div>
+            <div class="skill-card"><h3>HTML5</h3></div>
+            <div class="skill-card"><h3>CSS</h3></div>
+            <div class="skill-card"><h3>JavaScript</h3></div>
+            <div class="skill-card"><h3>ReactJS</h3></div>
+            <div class="skill-card"><h3>AI & Machine Learning</h3></div>
+            <div class="skill-card"><h3>Chatbot Services</h3></div>
+            <div class="skill-card"><h3>SEO</h3></div>
+            <div class="skill-card"><h3>WordPress</h3></div>
+            <div class="skill-card"><h3>Shopify</h3></div>
+            <div class="skill-card"><h3>Wix</h3></div>
+            <div class="skill-card"><h3>Adaptability</h3></div>
+            <div class="skill-card"><h3>Communication</h3></div>
+             <div class="skill-card"><h3>Customer Communications Management</h3></div>
+            <div class="skill-card"><h3>Customer Service</h3></div>
+            <div class="skill-card"><h3>Fast Learner</h3></div>
+            <div class="skill-card"><h3>Knowledge of Advertising</h3></div>
+            <div class="skill-card"><h3>Business Marketing</h3></div>
+            <div class="skill-card"><h3>Logotypes</h3></div>
+            <div class="skill-card"><h3>Adobe Photoshop</h3></div>
+            <div class="skill-card"><h3>Blogger (Service)</h3></div>
+            <div class="skill-card"><h3>Attention to Detail</h3></div>
+            <div class="skill-card"><h3>Social Media</h3></div>
+            <div class="skill-card"><h3>Creativity</h3></div>
+            <div class="skill-card"><h3>Friendliness</h3></div>
+            <div class="skill-card"><h3>C & C++</h3></div>
+            <div class="skill-card"><h3>English</h3></div>
+            <div class="skill-card"><h3>Urdu</h3></div>
+            <div class="skill-card"><h3>Panjabi</h3></div>
+            <div class="skill-card"><h3>Microsoft Office Specialist</h3></div>
+            <div class="skill-card"><h3>Microsoft Excel</h3></div>
+            <div class="skill-card"><h3>Microsoft PowerPoint</h3></div>
+            <div class="skill-card"><h3>Data Base</h3></div>
+            <div class="skill-card"><h3>Python</h3></div>
+            <div class="skill-card"><h3>SQL</h3></div>
+            <div class="skill-card"><h3>Market Research</h3></div>
+            <div class="skill-card"><h3>Brand Management</h3></div>
+        </div>
+    </section>
+
+    <section class="experience-section fade-in">
+        <h2>💼 My Experience</h2>
+        <div class="experience-card">
+            <h3>Sales Agent & Website Developer</h3>
+            <h4>AH Logistics Dispatch & Solution, Gujranwala (April 2025 - Present)</h4>
+            <ul>
+                <li>Generated leads, built client relationships, presented value propositions, and closed deals for logistics services.</li>
+                <li>Increased client website traffic by an average of 30% through strategic SEO implementation integrated within custom web development solutions and performance optimization techniques.</li>
+            </ul>
+        </div>
+        <div class="experience-card">
+            <h3>Sales And Marketing Specialist</h3>
+            <h4>CRAFTSCODE SOLUTION, Islamabad (October 2024 - January 2025)</h4>
+            <ul>
+                <li>Provided website solutions that included the development of custom landing pages optimized for email campaign traffic and conversions.</li>
+            </ul>
+        </div>
+        <div class="experience-card">
+            <h3>Website Developer</h3>
+            <h4>APPPILLARS, Gujranwala (January 2024 - October 2024)</h4>
+            <ul>
+                <li>Assisted in the development of web applications using JavaScript and React.js.</li>
+                <li>Collaborated with developers and designers to enhance UI/UX functionality.</li>
+            </ul>
+        </div>
+        <div class="experience-card">
+            <h3>Market Research Analyst</h3>
+            <h4>Silverlight Research Expert Network, London (October 2024)</h4>
+            <ul>
+                 <li>Conducted comprehensive market analysis to identify trends and opportunities in the digital marketing landscape.</li>
+                 <li>Utilized data analytics tools to measure campaign performance and optimize marketing efforts.</li>
+            </ul>
+        </div>
+        <div class="experience-card">
+            <h3>Freelance Blogger</h3>
+            <h4>Leverage Info, Gujranwala (March 2024 - Present)</h4>
+            <ul>
+                <li>Spearheaded social media management, enhancing brand visibility and engagement.</li>
+                <li>Created unique, high-impact logos for branding and marketing campaigns.</li>
+            </ul>
+        </div>
+         <div class="experience-card">
+            <h3>Brand Ambassador</h3>
+            <h4>Leverage (December 2023 - Present)</h4>
+            <ul>
+                <li>Spearheaded social media management, enhancing brand visibility and engagement.</li>
+                <li>Created unique, high-impact logos for branding and marketing campaigns.</li>
+            </ul>
+        </div>
+        <div class="experience-card">
+            <h3>Social Media Manager & Website Developer</h3>
+            <h4>Alpha Academy, Gujranwala (January 2022 - Present)</h4>
+            <ul>
+                <li>Spearheaded social media management, enhancing brand visibility and engagement.</li>
+                <li>Created unique, high-impact logos for branding and marketing campaigns.</li>
+                <li>Developed and implemented scalable website architectures to accommodate future growth and evolving business requirements.</li>
+            </ul>
+        </div>
+        <div class="experience-card">
+            <h3>Owner</h3>
+            <h4>Online Finds Pakistan, Gujranwala (October 2024 - Present)</h4>
+            <ul>
+                <li>Discover a world of quality at OnlineFinds.com! We bring you the bestproducts from around the globe, right to your doorstep.</li>
+            </ul>
+        </div>
+        <div class="experience-card">
+             <h3>Freelance Website Developer</h3>
+             <h4>Gujranwala (October 2024 - Present)</h4>
+              <ul>
+                <li>Developed and deployed 5+ responsive websites for diverse clients (e.g., e-commerce, portfolio, small business, dispatch company), resulting in an average client satisfaction rating of 4.8/5.</li>
+              </ul>
+        </div>
+    </section>
+
+    <section class="trophy-section fade-in">
+        <h2>🏆 My Certificates</h2>
+        <div class="trophy-card">
+            <h3>Microsoft Office Specialist</h3>
+            <p>Microsoft</p>
+        </div>
+        <div class="trophy-card">
+            <h3>HTML5 and Responsive Web Design</h3>
+            <p>Aptect</p>
+        </div>
+        
+    </section>
+
+
+    <div class="footer-logo">
+        <div class="diiiv">
+            <a href="https://zcal.co/muhammad-mikran">
+                <div class="bg-sky-700 rounded-2xl shadow-sm shadow-sky-500 outline outline-slate-400 -outline-offset-8">
+                    <div class="group overflow-hidden relative after:duration-500 before:duration-500  duration-500 hover:after:duration-500 hover:after:translate-x-24 hover:before:translate-y-12 hover:before:-translate-x-32 hover:duration-500 after:absolute after:w-24 after:h-24 after:bg-sky-700 after:rounded-full  after:blur-xl after:bottom-32 after:right-16 after:w-12 after:h-12  before:absolute before:w-20 before:h-20 before:bg-sky-400 before:rounded-full  before:blur-xl before:top-20 before:right-16 before:w-12 before:h-12  hover:rotate-12 flex justify-center items-center h-56 w-80  bg-neutral-900 rounded-2xl outline outline-slate-400 -outline-offset-8">
+                        <div class="z-10 flex flex-col items-center gap-2">
+                            <span class="text-slate-400 text-6xl font-bold">MMS </span>
+                            <p class="text-gray-50">Frontend developer</p>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            // Smooth fade-in effect on scroll
+            const fadeElements = document.querySelectorAll(".fade-in");
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("active"); // Add a class to trigger the opacity change
+                        observer.unobserve(entry.target); // Remove observer after element is visible
+                    }
+                });
+            }, {
+                threshold: 0.1 // Adjust as needed
+            });
+
+            fadeElements.forEach(el => observer.observe(el));
+
+            // Hover Effect on CTA Button
+            const ctaButton = document.getElementById("ctaButton");
+            if(ctaButton){ // Make sure the button exists
+                ctaButton.addEventListener("mouseover", function() {
+                    this.style.backgroundColor = "#FFD700";
+                    this.style.color = "black";
+                    this.style.transform = "scale(1.1)";
+                });
+
+                ctaButton.addEventListener("mouseout", function() {
+                    this.style.backgroundColor = "#4CAF50"; // Reverted to original button color from your styles
+                    this.style.color = "white";
+                    this.style.transform = "scale(1)";
+                });
+            }
+
+
+            // Contact Form Submission
+            const contactForm = document.getElementById("contactForm");
+            if(contactForm){
+                contactForm.addEventListener("submit", function(event) {
+                    event.preventDefault();
+                    let name = document.getElementById("name").value;
+                    let email = document.getElementById("email").value;
+                    let message = document.getElementById("message").value;
+                    let responseMessage = document.getElementById("responseMessage");
+
+
+                    if (name && email && message) {
+                        responseMessage.innerText = "Thank you for reaching out!";
+                        // Clear the form fields after successful submission
+                        document.getElementById("name").value = '';
+                        document.getElementById("email").value = '';
+                        document.getElementById("message").value = '';
+                    } else {
+                        responseMessage.innerText = "Please fill in all fields.";
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>
