@@ -326,6 +326,46 @@
         .diiiv { /* The div inside footer-logo already handles its own centering with Tailwind */
             /* No specific styles needed here unless to override body text-align if necessary */
         }
+        .whatsapp-button {
+            text-decoration: none;
+            background-color: #25D366;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            padding: 15px 25px;
+            cursor: pointer;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+            z-index: 1000; /* Keep a high z-index for the button itself */
+            animation: pulse 1.5s infinite alternate; /* Add animation */
+            background: linear-gradient(to right, #0c0d0c, #206fc9) !important; /* Changed background color */
+        }
+
+        .whatsapp-button i {
+            margin-right: 10px;
+        }
+
+        /* Floating/Fixed positioning on the left */
+        .whatsapp-fixed-left {
+            position: fixed;
+            bottom: 30px; /* Adjust vertical position */
+            left: 30px; /* Adjust horizontal position */
+            z-index: 99999; /* Extremely high z-index to stay on top */
+        }
+
+        /* Animation keyframes */
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                opacity: 0.8;
+            }
+            100% {
+                transform: scale(1.05);
+                opacity: 1;
+            }
+        }
 
     </style>
 </head>
@@ -341,7 +381,13 @@
         <p>I specialize in front-end web development (JavaScript ⚛️, React.js), strategic digital marketing 📈, and branding ✨.</p>
         <button id="ctaButton" class="social-btn">View My Work</button>
     </section>
-
+    <a
+        href="https://wa.me/+923494206922"
+        target="_blank"
+        class="whatsapp-button whatsapp-fixed-left">
+        <i style="font-size:24px" class="fa">&#xf232;</i>
+        Contact For Portfolio
+    </a>
     <section class="socials fade-in">
         <h2>🌐 Connect with Me</h2>
         <div class="social-icons">
@@ -498,6 +544,39 @@
             </a>
         </div>
     </div>
+
+    <script>
+        (function(){
+            if(!window.chatbase||window.chatbase("getState")!=="initialized"){
+                window.chatbase=(...arguments)=>{
+                    if(!window.chatbase.q){
+                        window.chatbase.q=[]
+                    }
+                    window.chatbase.q.push(arguments)
+                };
+                window.chatbase=new Proxy(window.chatbase,{
+                    get(target,prop){
+                        if(prop==="q"){
+                            return target.q
+                        }
+                        return(...args)=>target(prop,...args)
+                    }
+                })
+            }
+            const onLoad=function(){
+                const script=document.createElement("script");
+                script.src="https://www.chatbase.co/embed.min.js";
+                script.id="XMu27tiEkhnCS0bXQzKZJ";
+                script.domain="www.chatbase.co";
+                document.body.appendChild(script)
+            };
+            if(document.readyState==="complete"){
+                onLoad()
+            } else {
+                window.addEventListener("load",onLoad)
+            }
+        })();
+    </script>
 
     <script>
         document.addEventListener("DOMContentLoaded", () => {
